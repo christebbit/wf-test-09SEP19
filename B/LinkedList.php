@@ -60,11 +60,12 @@ class LinkedList {
             if ($current->data == $key) {
                 $this->removeFoundNode($current);
                 return true;
-            }    
+            }
+
+            $current = $current->next;
         }
-        
-        $current = $current->next;
-        
+
+
         return false;
     }
 
@@ -72,13 +73,15 @@ class LinkedList {
         $previous = $n->previous;
         $next = $n->next;
 
-        if (null == $previous) {
+        if ($previous != NULL) {
             $previous->next = $next;
         }
 
-        if (null == $next) {
+        if ($next != NULL) {
             $next->previous = $previous;
         }
+
+        unset($n);
     }
 
 }
